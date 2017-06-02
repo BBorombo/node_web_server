@@ -25,9 +25,9 @@ app.use((req, res, next) => {
    next();
 });
 
-app.use((req, res, next) => {
-   res.render('maintenance.hbs');
-});
+/*app.use((req, res, next) => {
+ res.render('maintenance.hbs');
+ });*/
 
 hbs.registerHelper('getCurrentYear', () => {
    return new Date().getFullYear()
@@ -49,13 +49,18 @@ app.get('/about', (req,res) => {
     res.render('about.hbs', {
         pageTitle: 'About page'
     });
-})
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs');
+});
 
 app.get('/bad', (req, res) => {
     res.send({
         errorMessage : 'Unable to fetch the data'
     });
-})
+});
+
 app.listen(port, () => {
     console.log(`Server is up on port ${port} .`);
 });
